@@ -4,13 +4,23 @@ const http      = require('http');
 const server    = http.createServer(app);
 const socketIO = require('socket.io')(server); //create socket IO package and instintiate with server
 
-const LISTEN_PORT = 8080; //make sure greater than 3000. Some ports are reserved/blocked by firewall ...
+const LISTEN_PORT = 8080; //make sure greater than 3000. Some ports are reserved/blocked by firewall
 
 app.use((express.static(__dirname + '/public'))); //set root dir to the public folder
 
 //set home page route
 app.get('/', function(req,res) {
     res.sendFile(__dirname + '/public/index.html');
+});
+
+//set player1 page
+app.get('/player1', function(req,res) {
+    res.sendFile(__dirname + '/public/player1.html');
+});
+
+//set player2 page
+app.get('/player2', function(req,res) {
+    res.sendFile(__dirname + '/public/player2.html');
 });
 
 //set color page route
@@ -23,7 +33,7 @@ app.get('/controller', function(req,res) {
     res.sendFile(__dirname + '/public/controller.html');
 });
 
-//websockets event
+//websocket events
 socketIO.on('connection', function(socket){
     console.log(socket.id + 'has connect!');
     

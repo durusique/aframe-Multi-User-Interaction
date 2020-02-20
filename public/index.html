@@ -2,26 +2,22 @@
 <html>
     <head>
     <title>aframe_assignment3</title>
-    <!-- loading aframe scripts -->
-    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
-    <!-- environment -->
-    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    <style>
+        div{    
+                background-color: aqua;
+                max-width: 500px;
+                margin: auto;
+                top: 50%;
+            }
+    </style>
     </head>
     <body>
-        <a-scene>
-            <a-assets>
-                <!--loading 3D models -->
-
-                <!-- loading sound -->
-            </a-assets>
-            <!-- environment -->
-            <a-entity environment="preset: tron; groundColor: #445; grid: 1x1"></a-entity>
-        </a-scene>
-        <!-- 
-        <h1>ciao amici!</h1>
-        <a href="/color">Color Page</a>
-        <a href="/controller">Controller Page</a>
-        -->
-        
+        <div>
+        <h1>Welcome to web VR mini game</h1>
+        <p>Entering the game, players appear in 3D game world, to win one player needs to get to the finish faster than another. To start the battle both players need to open the door at the same time. </p>
+        <p>Click on the buttons below to start playing!</p>
+        <a href="/player1">Player 1</a>
+        <a href="/player2">Player 2</a>
+        </div> 
     </body>
 </html>

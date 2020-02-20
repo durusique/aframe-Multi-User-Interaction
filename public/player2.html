@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Player 2</title>
+    <!-- load in socket -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- load in aframe -->
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <!-- environment -->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+    </head>
+    <body>
+        <script>
+            let socket = io();
+            //socket events
+            socket.on('connect', function(){
+               console.log('Player 2 connected');
+            });
+        </script>
+        <a-scene>
+            <a-assets>
+                <!--loading 3D models -->
+                <a-asset-item id="door-obj" src="assets/OBJ/Door.obj"></a-asset-item>
+                <!-- loading sound -->
+            </a-assets>
+            <!-- environment -->
+            <a-entity environment="preset: tron; groundColor: #445; grid: 1x1"></a-entity>
+             <!-- sky -->
+
+             <!-- camera -->
+            <a-entity position="0 1.5 0" camera wasd-controls look-controls>
+                
+            </a-entity>
+            <!-- lights -->
+
+             <!-- positioning 3D models -->
+            <a-entity   id="door"
+                        obj-model="obj: #door-obj"
+                        scale="0.01 0.01 0.01"
+                        rotation="0 0 0"  
+                        position="-1.675 0 -3.250"
+                        class="clickable"
+                        > 
+             </a-entity>
+        </a-scene>
+        <!-- 
+        <h1>ciao amici!</h1>
+        <a href="/color">Color Page</a>
+        <a href="/controller">Controller Page</a>
+        -->
+        
+    </body>
+</html>
