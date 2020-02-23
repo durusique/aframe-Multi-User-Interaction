@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Player 2</title>
+    <!-- loading socket -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- loading aframe -->
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <!-- loading environment -->
+    <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+   
+    </head>
+    <body>
+        <a-scene>
+            <a-assets>
+            <!-- loading sound -->
+
+            </a-assets>
+            <!-- setting environment -->
+            <a-entity environment="preset: tron; groundColor: #445; grid: 1x1"></a-entity>
+             <!-- setting camera -->
+            <a-entity position="0 1.6 0" camera wasd-controls look-controls></a-entity>
+
+              <!-- positioning cubes -->
+            <a-box  id="cubeT"       
+                    color="#FFAA00"
+                    position="7.486 3.956 -13.96"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube"       
+                    color="#FFAA00"
+                    position="-1.6 2.5 -3.2"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube"       
+                    color="#FFAA00"
+                    position="6.76 2.5 -5.82"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube"       
+                    color="#FFAA00"
+                    position="3.076 5.35 -2.82"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube"   
+                    color="#FFAA00"
+                    position="-0.28 3.53 -5.082"
+                    scale="0.8 0.8 0.8"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="-4.05 6.422 -6.59"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube"   
+                    color="#FFAA00"
+                    position="0.675 2.5 -3.2"
+                    scale="0.7 0.7 0.7"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube"   
+                    color="#FFAA00"
+                    position="-0.14 1.87 -11.9"
+                    scale="0.8 0.8 0.8"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="-3.6 2.5 -1"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="-6 4 -0"
+                    scale="0.7 0.7 0.7"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="5.1 2.5 -10.7"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="-5 2.5 -5"
+                    scale="0.7 0.7 0.7"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="-1.6 1 2"
+                    scale="0.7 0.7 0.7"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="-1.6 4 4"
+                    scale="0.7 0.7 0.7"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="1.5 6.22 -7.59"
+                    scale="0.7 0.7 0.7"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="1.5 6.22 -7.59"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="5.7 1.92 -8.59"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="2.1 6.92 -3.59"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            <a-box  id="cube" 
+                    color="#FFAA00"
+                    position="4.5 0.22 -1.0"
+                    scale="0.6 0.6 0.6"
+                    class="clickable"
+            ></a-box>
+            
+            <!-- adding camera and a cursor -->
+            <a-entity position="0 1.2 2" camera look-controls wasd-controls>
+            <a-entity   cursor="rayOrigin:mouse;"
+                        raycaster="far:20; interval:100; objects:.clickable">
+            </a-entity>
+        </a-scene>
+
+        <!-- SOCKET SCRIPT -->
+        <script>
+
+            let socket = io();
+
+            //socket events
+            socket.on('connect', function(){
+               console.log('p2 connected');
+            });
+           
+            //when target cube clicked
+            document.querySelector('#cubeT').addEventListener('click', function(){
+                    console.log("target cube clicked");  
+                    socket.emit('targetCubeEventCoop');
+                    //load winner page
+                    window.location.replace("/winner.html");
+                });
+
+            //when other cubes clicked
+            const cubes = document.querySelectorAll("#cube")
+            for (const cube of cubes) {
+            cube.addEventListener('click', function(event) {
+                console.log("other cube clicked");  
+                cube.setAttribute("color", "#666");
+                })
+            }
+                
+            //listening for 'cubeT_found' event
+            socket.on('cubeT_found', function(){
+                console.log('target cube found');
+                 //load winner page
+                 window.location.replace("/winner.html");
+            });
+        </script>   
+    </body>
+</html>

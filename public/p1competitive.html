@@ -156,7 +156,7 @@
                 //event when target cube clicked
                 document.querySelector('#cubeT').addEventListener('click', function(){
                     console.log("target cube clicked");  
-                    socket.emit('targetCubeEventCoop');
+                    socket.emit('targetCubeEventP1');
                     //load winner page
                     window.location.replace("/winner.html");
                 });
@@ -170,11 +170,10 @@
                     })
                 }
 
-                //listening for 'cubeT_found' event
-                socket.on('cubeT_found', function(){
-                        console.log('target cube found');
-                         //load winner page
-                    window.location.replace("/winner.html");
+                //listening for 'cubeT_foundByP2' event from player2 
+                socket.on('cubeT_foundByP2', function(){
+                        console.log('target cube found by Player2');
+                        window.location.replace("/loser.html");
                 });
             </script> 
         </a-scene>  

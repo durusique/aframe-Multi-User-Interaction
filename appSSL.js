@@ -27,7 +27,35 @@ app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res) {
     res.sendFile(__dirname + 'public/index.html');
 });
+//set player1 competitive page route
+app.get('/p1competitive', function(req,res) {
+    res.sendFile(__dirname + '/public/p1competitive.html');
+});
 
+//set player2 competitive page route
+app.get('/p2competitive', function(req,res) {
+    res.sendFile(__dirname + '/public/p2competitive.html');
+});
+
+//set player1 cooperative page route
+app.get('/p1coop', function(req,res) {
+    res.sendFile(__dirname + '/public/p1coop.html');
+});
+
+//set player2 cooperative page route
+app.get('/p2coop', function(req,res) {
+    res.sendFile(__dirname + '/public/p2coop.html');
+});
+
+//set winner page route
+app.get('/winner', function(req,res) {
+    res.sendFile(__dirname + '/public/winner.html');
+});
+
+//set loser page route
+app.get('/loser', function(req,res) {
+    res.sendFile(__dirname + '/public/loser.html');
+});
 /************* LOAD SSL CERTS (if you ran 'node createCerts.js') ***************/
 let privateKeyPem = '';
 let certPem = '';

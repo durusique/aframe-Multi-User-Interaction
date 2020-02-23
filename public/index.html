@@ -3,20 +3,48 @@
     <head>
     <title>aframe_assignment3</title>
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto:300&display=swap');
         div{    
                 background-color: aqua;
                 max-width: 500px;
                 margin: auto;
+                margin-top: 70px;
                 top: 50%;
+                padding: 25px 50px 50px 50px;
+                font-family: 'Roboto';
+                opacity: 0.5;
             }
+        h1{
+            text-align: center;
+        }
+        body {
+            background-image: url('/assets/images/index.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        button{
+            background-color: #555555;
+            color: white;
+            border: none;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 16px;
+        }
     </style>
     </head>
     <body>
         <div>
-        <h1>Welcome to web VR mini game</h1>
-        <p>Competitive interaction:</p>
-        <a href="/player1">Player 1</a>
-        <a href="/player2">Player 2</a>
+        <h1>Design Studio 3, assignment 3 <br> Multi-User Interactions in VR</h1>
+        <h2>Competitive interaction:</h2>
+        <p>Goal: find a cube faster than Player 2, only one player can win </p>
+        <button onclick="location.href='/p1competitive'" type="button">Player 1</button>
+        <button onclick="location.href='/p2competitive'" type="button">Player 2</button>
+        <h2>Cooperative interaction:</h2>
+        <p>Goal: find a cube together, both players can win</p>
+        <button onclick="location.href='/p1coop'" type="button">Player 1</button>
+        <button onclick="location.href='/p2coop'" type="button">Player 2</button>
         </div> 
     </body>
 </html>
