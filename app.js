@@ -23,6 +23,16 @@ app.get('/player2', function(req,res) {
     res.sendFile(__dirname + '/public/player2.html');
 });
 
+//set controller page route
+app.get('/winner', function(req,res) {
+    res.sendFile(__dirname + '/public/winner.html');
+});
+
+app.get('/loser', function(req,res) {
+    res.sendFile(__dirname + '/public/loser.html');
+});
+
+
 //set color page route
 app.get('/color', function(req,res) {
     res.sendFile(__dirname + '/public/color.html');
@@ -41,7 +51,27 @@ socketIO.on('connection', function(socket){
         console.log(socket.id + 'has disconnect');
     }); 
 
-    //custom events
+    //target cube found by p1
+    socket.on('targetCubeEvent', function(data){
+        console.log('target cube event heard');
+        socketIO.sockets.emit('cubeT_change');
+    });
+    //target cube found by p2
+    socket.on('targetCubeEvent2', function(data){
+        console.log('target cube event 2 heard');
+        socketIO.sockets.emit('cubeT_change2');
+    });
+    //other cube found by p1
+    socket.on('otherCubeEvent', function(data){
+        console.log('other cube event heard');
+        socketIO.sockets.emit('cube_change');
+    });
+    //other cube found by p2
+    socket.on('otherCubeEvent2', function(data){
+        console.log('other cube event 2 heard');
+        socketIO.sockets.emit('cube_change2');
+    });
+
     socket.on('redEvent', function(data){
         console.log('red event heard');
          //emit event
