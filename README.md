@@ -1,5 +1,4 @@
-# aframe-Multi-User-Interaction <br>
-Design Studio 3, assignment 3 
+# aframe VR Multi-User Interaction <br>
 
 Requirements: <br>
 • Create a system that connects two users via WebSockets. <br>
